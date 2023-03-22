@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { blogConfig } from "@/util/constants";
 
 const Header = () => {
   return (
@@ -14,7 +15,7 @@ const Header = () => {
             alt="logo"
           />
         </Link>
-        <h1>The Pika</h1>
+        <h1>{blogConfig.TITLE}</h1>
       </div>
       <div>
         <Link 
