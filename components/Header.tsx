@@ -11,17 +11,18 @@ const Header = () => {
             className="rounded-[50%] object-cover"
             height={50}
             width={50}
-            src="https://media.tenor.com/Gox0-B97R4gAAAAC/pikachu-smile.gif"
+            src={blogConfig.LOGO_URL}
             alt="logo"
           />
         </Link>
         <h1>{blogConfig.TITLE}</h1>
       </div>
       <div>
-        <Link 
-        className="px-5 py-3 text-sm md:text-base bg-gray-900 text-[#f7ab0a] flex items-center rounded-full text-center"
-        href="/studio">
-            Goto Studio
+        <Link
+          className="px-5 py-3 text-sm md:text-base bg-gray-900 text-[#f7ab0a] flex items-center rounded-full text-center"
+          href="/studio"
+        >
+          Goto Studio
         </Link>
       </div>
     </header>

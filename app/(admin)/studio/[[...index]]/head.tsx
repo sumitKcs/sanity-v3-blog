@@ -3,6 +3,7 @@ export { NextStudioHead } from "next-sanity/studio/head";
 
 // To customize it, use it as a children component:
 import { NextStudioHead } from "next-sanity/studio/head";
+import { blogConfig } from "@/util/constants";
 
 export default function CustomStudioHead() {
   return (
@@ -12,7 +13,7 @@ export default function CustomStudioHead() {
         rel="icon"
         type="image/png"
         sizes="32x32"
-        href="https://www.sanity.io/static/images/favicons/favicon-32x32.png"
+        href={blogConfig.LOGO_URL}
       />
     </>
   );

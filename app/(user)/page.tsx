@@ -11,12 +11,15 @@ const query = groq`
     author->,
     categories[]->
   } | order(_createdAt asc)
+
   `;
+
+//revalidate every 60 seconds
+export const revalidate = 60;
 //fallback component
 const fallback = (
   <div role="status">
     <p className="text-center text-lg animate-pulse text-[#f7ab0a]">
-      {" "}
       Loading Preview Data...
     </p>
   </div>
@@ -35,6 +38,5 @@ export default async function HomePage() {
   // Enable NextJS to cache and dedupe queries
   const posts = await client.fetch(query);
 
-  console.log(posts);
   return <BlogList posts={posts} />;
 }

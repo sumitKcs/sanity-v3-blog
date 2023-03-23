@@ -3,12 +3,26 @@ import { groq } from "next-sanity";
 import Image from "next/image";
 import urlFor from "@/lib/urlFor";
 import { PortableText } from "@portabletext/react";
+import { RichTextComponent } from "@/components/RichTextComponent";
 
 type Props = {
   params: {
     slug: string;
   };
 };
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const query = groq`*[_type=="post"] {
+        slug
+    }`;
+  const slugs: Post[] = await client.fetch(query);
+  const slugRoutes = slugs.map((slug) => slug.slug.current);
+
+  return slugRoutes.map((slug) => ({
+    slug,
+  }));
+}
 
 const Post = async ({ params: { slug } }: Props) => {
   const query = groq`
@@ -20,7 +34,6 @@ const Post = async ({ params: { slug } }: Props) => {
     }
     `;
   const post: Post = await client.fetch(query, { slug });
-  console.log(post);
   return (
     <article className="px-10 pb-28">
       <section className="space-y-2 border border-[#f7ab0a] text-white">
@@ -75,7 +88,9 @@ const Post = async ({ params: { slug } }: Props) => {
           </section>
         </div>
       </section>
-      <PortableText value={post.body} />
+      <section className="mt-10">
+        <PortableText value={post.body} components={RichTextComponent} />
+      </section>
     </article>
   );
 };
