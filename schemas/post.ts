@@ -11,6 +11,12 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'description',
+      description: "Enter a short snipper for the blog...",
+      title:"description",
+      type: 'string'
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug',
       type: 'slug',

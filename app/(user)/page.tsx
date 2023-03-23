@@ -10,8 +10,9 @@ const query = groq`
     ...,
     author->,
     categories[]->
-  } | order(_createdAt desc)
+  } | order(_createdAt asc)
   `;
+//fallback component
 const fallback = (
   <div role="status">
     <p className="text-center text-lg animate-pulse text-[#f7ab0a]">
@@ -30,9 +31,10 @@ export default async function HomePage() {
       </PreviewSuspense>
     );
   }
+
+  // Enable NextJS to cache and dedupe queries
   const posts = await client.fetch(query);
+
   console.log(posts);
-  return (
-    <BlogList posts={posts} />
-  );
+  return <BlogList posts={posts} />;
 }
