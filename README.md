@@ -70,8 +70,6 @@ npm run dev
 
 - [Next.js 13](https://nextjs.org)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Firebase](https://console.firebase.google.com/)
-- [NextAuth.js](https://next-auth.js.org/)
 - [Typescript](https://www.typescriptlang.org/)
 - [Vercel](https://vercel.com)
 - [sanity](https://www.sanity.io)
